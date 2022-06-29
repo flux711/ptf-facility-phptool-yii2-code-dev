@@ -17,6 +17,6 @@ class FacilityCodePool
 		if ($result['Error'] == true)
 			throw new BadRequestHttpException($result['ErrorMessage']);
 
-		return $result['valid'];
+		return ["valid" => $result['valid']];
 	}
 }
