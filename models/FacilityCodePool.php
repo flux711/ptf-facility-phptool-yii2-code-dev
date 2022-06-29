@@ -1,44 +1,22 @@
 <?php
 
-namespace flux711\yii2\facility_code_dev\models;
+namespace flux711\yii2\facility_phptool_code_dev\models;
 
-use flux711\yii2\facility_code_dev\common\models\FacilityRecord;
+use api\modules\rhea\common\models\ConnectionManager;
 use Yii;
+use yii\web\BadRequestHttpException;
 
-class FacilityCodePool extends FacilityRecord
+class FacilityCodePool
 {
-	public static function tableName()
+	public static function checkCode($code, $pool)
 	{
-		return 'facility_code_pool';
-	}
+		$url = 'https://phytecphptool.phytec.de/api/v1/number/';
+		$url = $url."is-scan-code-valid?ScanCode=".$code."&PoolId=".$pool;
 
-	public function rules()
-	{
-		return [
-			[
-				[
-					'name',
-					'regex',
-				],
-				'required'
-			],
-			[
-				[
-					'name',
-					'regex',
-				],
-				'string',
-				'max' => 100
-			],
-		];
-	}
+		$result = ConnectionManager::curlOperation($url);
+		if ($result['Error'] == true)
+			throw new BadRequestHttpException($result['ErrorMessage']);
 
-	public function attributeLabels()
-	{
-		return [
-			'facility_code_pool_id' => 'Facility Code Pool ID',
-			'name' => 'Code name',
-			'regex' => 'Code regex',
-		];
+		return $result['valid'];
 	}
 }
