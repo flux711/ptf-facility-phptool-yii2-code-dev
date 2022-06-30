@@ -10,8 +10,8 @@ This repository handles the facility data which can be used to simulate ....
 ## Installing
 
 Add into the **require** section of your composer.json file the following
-string: ```"flux711/facility-phptool-code-dev": "dev-master" ```and update
-composer: ```sudo docker exec -it --user www-data rhea_web_1 composer update -d rhea-yii2```
+string: ```"flux711/facility-phptool": "dev-master" ```  
+and update composer: ```sudo docker exec -it --user www-data rhea_web_1 composer update -d rhea-yii2```
 
 Go to your application config file inside the module section (e.g. rhea-yii2/api/config/main-local.php) and add the
 following to your config to connect the project to your module:
@@ -19,7 +19,7 @@ following to your config to connect the project to your module:
 ```
 $config['bootstrap'][] = 'facility';
 $config['modules']['facility'] = [
-  'class' => 'flux711\yii2\facility_phptool_code_dev\Module',
+  'class' => 'rhea\facility\Module',
   // uncomment the following to add your IP if you are not connecting from localhost.
   //'allowedIPs' => ['127.0.0.1', '::1'],
 ];

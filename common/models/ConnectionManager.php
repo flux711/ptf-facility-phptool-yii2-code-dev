@@ -1,6 +1,6 @@
 <?php
 
-namespace api\modules\rhea\common\models;
+namespace rhea\facility\common\models;
 
 use yii\web\NotFoundHttpException;
 

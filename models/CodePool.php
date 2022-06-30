@@ -1,12 +1,12 @@
 <?php
 
-namespace flux711\yii2\facility_phptool_code_dev\models;
+namespace rhea\facility;
 
 use api\modules\rhea\common\models\ConnectionManager;
 use Yii;
 use yii\web\BadRequestHttpException;
 
-class FacilityCodePool
+class CodePool
 {
 	public static function checkCode($code, $pool)
 	{
